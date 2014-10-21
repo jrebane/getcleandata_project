@@ -179,7 +179,7 @@ The following are the measures collected in the data set for each observation.
 | [,68]  | stddevFrequencyDomainSignalMagnitudeAngularVelocityBodyJerkSignals | fBodyBodyGyroJerkMag-std  | numeric |
 
 
-## Variable naming
+## Variable Naming
 
 The variables have been named with the following components, with mean or std leading the variable name:
 
@@ -195,3 +195,10 @@ The variables have been named with the following components, with mean or std le
 | Body                  | Body of Phone as Reference Frame                   |
 | Gravity               | Gravity as Reference Frame                         |
 | Jerk                  | Jerk Signal (vs. Smooth Signal for other measures) |
+
+
+# Package Dependencies
+
+The following packages are required for the proper function of the `run_analysis.R` script:
+- `dplyr`
+- `reshape2`

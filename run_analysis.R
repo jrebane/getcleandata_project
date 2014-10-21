@@ -1,9 +1,5 @@
 # Load required libraries
 require(dplyr)
-require(lubridate)
-require(ggplot2)
-require(ggthemes)
-require(timeDate)
 library(reshape2)
 
 # The data set is unzipped into the working directory - the associated files 
@@ -57,12 +53,10 @@ combineddata <- rbind(xtrain, xtest)
 # The combined data set is subsetted to include only the mean and standard 
 # deviation variables along with identifier data (as outlined by the assignment 
 # guidelines) using regular expressions. This new data set has 68 variables.
-
 pareddata <- combineddata[,grep("(mean\\(\\)|std\\(\\))|subject|activity", 
                                 colnames(combineddata))]
 
 # Activity labels from `activity_labels.txt` are renamed
-
 activitylabels$V2 <- c("walk", "walkup", "walkdown", "sitting", "standing", 
                        "laying")
 
@@ -175,10 +169,8 @@ colnames(pareddata)[67:68] <- c(
 #   - One variable per column
 #   - A single observation per row (where each observation is the unique observation of a single subject and a single activity and the summary of means of all measures collected for that subject and activity) 
 #   - A table holding only elements of one kind
-
 melted_data <- melt(pareddata, id.vars=c("subject", "activity"))
 tidy_mean_data <- dcast(melted_data, subject + activity ~ variable, mean)
 
 # The tidy data set is written to a text file, `tidy_mean_data.txt`, using the `write.table()` function.
-
 write.table(tidy_mean_data, "tidy_mean_data.txt", row.name=FALSE)
